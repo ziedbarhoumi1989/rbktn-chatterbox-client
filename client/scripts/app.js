@@ -20,9 +20,12 @@ var App = {
   fetch: function(callback = ()=>{}) {
     Parse.readAll((data) => {
       // examine the response from the server request:
+      console.log(data)
       data.results.map( message => {
-        if(message.username && message.text && message.roomname){
-          MessagesView.renderMessage(message);
+        if(message.username && message.text && message.roomname && !message.text.includes('<') &&!message.username.includes('<') && !message.roomname.includes('<')){
+          Messages.addMessage(message);
+          message.roomname && Rooms.add(message.roomname);
+          //MessagesView.renderMessage(message);
         }
       });
       callback();

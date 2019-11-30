@@ -8,7 +8,7 @@ var Parse = {
     $.ajax({
       url: Parse.server,
       type: 'POST',
-      data: JSON.stringify({username: App.username, text:message, roomname: 'blablabla' }),
+      data: JSON.stringify(message),
       contentType: 'application/json',
       //X-Content-Type-Options:"nosniff",
       success: successCB,
